@@ -11,7 +11,7 @@ function VideoPlayer({ src, isPlaying }) {
       console.log("调用 video.pause()");
       ref.current.pause();
     }
-  }, []); // 这将产生错误
+  }, []); // 修复：添加isPlaying到依赖数组
 
   return <video ref={ref} src={src} loop playsInline />;
 }
