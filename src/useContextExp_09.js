@@ -43,7 +43,7 @@ function Avatar({ person, size }) {
   );
 }
 
-function Card({ children: children, test }) {
+function Card({ children, test }) {
   console.log("xiaomai Card....", children, test);
   return <div className="card">{children}</div>;
 }

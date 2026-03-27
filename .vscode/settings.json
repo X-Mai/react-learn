@@ -1,4 +1,5 @@
 {
+  // ESLint配置
   "eslint.enable": true,
   "eslint.validate": [
     "javascript",
@@ -11,15 +12,24 @@
       "mode": "auto"
     }
   ],
-  "eslint.codeAction.showDocumentation": {
-    "enable": true
+  // 使用严格配置
+  "eslint.options": {
+    "configFile": ".eslintrc.strict.js"
   },
+  // 实时检查
   "eslint.run": "onType",
-  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.codeActionsOnSave.mode": "all",
+  // 保存时自动修复
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "always"
   },
-  "files.autoSave": "onFocusChange",
+  // 强制显示所有问题
+  "problems.decorations.enabled": true,
+  "problems.showCurrentInStatus": true,
+  // 自动保存
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  // 格式化配置
   "[javascript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"

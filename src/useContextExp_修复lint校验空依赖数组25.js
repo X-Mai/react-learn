@@ -10,7 +10,7 @@ function VideoPlayer({ src, isPlaying }) {
       console.log("调用 video.pause()");
       ref.current.pause();
     }
-  }, []); // 正确的依赖数组
+  }, [isPlaying]); // 修复：添加isPlaying到依赖数组
 
   return <video ref={ref} src={src} loop playsInline />;
 }
