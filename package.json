@@ -12,12 +12,19 @@
     "start:strict": "EXTEND_ESLINT=true ESLINT_NO_DEV_ERRORS=false react-scripts start",
     "build:strict": "EXTEND_ESLINT=true react-scripts build"
   },
+  "overrides": {
+    "react-scripts": {
+      "webpack": "^5.0.0",
+      "babel-loader": "^9.0.0"
+    }
+  },
   "dependencies": {
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.28.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "^1.0.0",
