@@ -30,6 +30,9 @@ importers:
       eslint:
         specifier: ^8.0.0
         version: 8.57.1
+      react-compiler-webpack:
+        specifier: ^1.0.0
+        version: 1.0.0(babel-plugin-react-compiler@1.0.0)
       typescript:
         specifier: ^5.1.0
         version: 5.9.3
@@ -4344,6 +4347,11 @@ packages:
   react-app-polyfill@3.0.0:
     resolution: {integrity: sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w==}
     engines: {node: '>=14'}
+
+  react-compiler-webpack@1.0.0:
+    resolution: {integrity: sha512-psMWf+k7psntYKTo6IdiQrERADKobtCrahfJ0QAsC+ccbqANKS/3go6+dLvYauUpMBpmrMlt5AqACRJZ4bKCtg==}
+    peerDependencies:
+      babel-plugin-react-compiler: '*'
 
   react-dev-utils@12.0.1:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
@@ -10566,6 +10574,15 @@ snapshots:
       raf: 3.4.1
       regenerator-runtime: 0.13.11
       whatwg-fetch: 3.6.20
+
+  react-compiler-webpack@1.0.0(babel-plugin-react-compiler@1.0.0):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0)
+      '@babel/plugin-syntax-typescript': 7.28.6(@babel/core@7.29.0)
+      babel-plugin-react-compiler: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4):
     dependencies:
