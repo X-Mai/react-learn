@@ -1,5 +1,6 @@
 // 严格的ESLint配置 - 用于开发时严格检查
 module.exports = {
+  plugins: ["react-compiler"],
   extends: ["react-app"],
   rules: {
     // 强制react-hooks依赖检查为错误级别
@@ -15,6 +16,7 @@ module.exports = {
         // 在JS/JSX文件中启用更严格的规则
         "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
+        "react-compiler/react-compiler": "error", // 或 "warn"
       },
     },
   ],
