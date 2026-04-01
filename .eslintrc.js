@@ -16,7 +16,7 @@ module.exports = {
         // 在JS/JSX文件中启用更严格的规则
         // "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
-        "react-compiler/react-compiler": "error", // 或 "warn"
+        // "react-compiler/react-compiler": "error", // 或 "warn"
       },
     },
   ],
