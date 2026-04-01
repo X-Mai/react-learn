@@ -22,10 +22,10 @@ const MyStyledComponent = function (props: MyComponentProps) {
     <div>
       {/* 方式1：内联样式（直接给JSX元素设style） */}
       <div style={mergedInlineStyle}>{text}-内联样式</div>
-
+      {/* 方式1.1 内联样式对象字节写在{}中 */}
+      <div style={{ padding: "10px" }}>-内联样式1.1</div>
       {/* 方式2：CSS类名（先定义CSS，再通过className引用） */}
       <div className={`base-class ${className}`}>{text}-CSS类名</div>
-
       {/* ❌ 错误示例：你问的这种写法无效 */}
       <div className="color:red">这行样式不会生效</div>
     </div>
