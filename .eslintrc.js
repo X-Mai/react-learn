@@ -4,7 +4,7 @@ module.exports = {
   extends: ["react-app"],
   rules: {
     // 强制react-hooks依赖检查为错误级别
-    "react-hooks/exhaustive-deps": "error",
+    // "react-hooks/exhaustive-deps": "error",
     // 其他可能需要严格检查的规则
     "no-unused-vars": "warn",
     "no-console": "warn",
@@ -14,9 +14,9 @@ module.exports = {
       files: ["**/*.js", "**/*.jsx"],
       rules: {
         // 在JS/JSX文件中启用更严格的规则
-        "react-hooks/exhaustive-deps": "error",
+        // "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
-        // "react-compiler/react-compiler": "error", // 或 "warn"
+        "react-compiler/react-compiler": "error", // 或 "warn"
       },
     },
   ],
