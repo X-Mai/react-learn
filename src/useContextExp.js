@@ -1,68 +1,92 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useEffectEvent } from "react";
 
-export default function App() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [canMove, setCanMove] = useState(true);
+export default function Counter() {
+  const [delay, setDelay] = useState(1000);
+  // const count = 119;
+  const count = useCounter(delay);
 
-  useEffect(() => {
-    function handleMove(e) {
-      if (canMove) {
-        setPosition({ x: e.clientX, y: e.clientY });
-      }
-    }
-
-    window.addEventListener("pointermove", handleMove);
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, [canMove]);
-
+  const [show, setShow] = useState(true);
   return (
     <>
       <label>
+        Tick duration: {delay} ms
+        <br />
         <input
-          type="checkbox"
-          checked={canMove}
-          onChange={(e) => setCanMove(e.target.checked)}
+          type="range"
+          value={delay}
+          min="10"
+          max="2000"
+          onChange={(e) => setDelay(Number(e.target.value))}
         />
-        是否允许移动
       </label>
       <hr />
-      <div
-        style={{
-          position: "absolute",
-          backgroundColor: "pink",
-          borderRadius: "50%",
-          opacity: 0.6,
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          pointerEvents: "none",
-          left: -20,
-          top: -20,
-          width: 40,
-          height: 40,
+      {show && <Test></Test>}
+      {show && <Test222></Test222>}
+      {show && <h1>Ticks: {count}</h1>}
+      {/* {show && <h1>Ticks</h1>} */}
+
+      <button
+        onClick={() => {
+          setShow(!show);
         }}
-      />
+      >
+        {show && "不"}显示Tick
+      </button>
     </>
   );
 }
 
-function Timer() {
-  const [count, setCount] = useState(0);
+function Test() {
+  // const count = useCounter(1000);
+  const count = 1231321;
 
-  const onTick = useEffectEvent(() => {
-    setCount(count + 1);
-  });
-
-  useTimer(onTick, 1000); // 🔴 避免: 传递 Effect Event
-
-  return <h1>{count}</h1>;
+  console.log("xiaomai Test...");
+  return <div>"测试组件"{count}</div>;
 }
 
-function useTimer(callback, delay) {
+function useCounter(delay) {
+  console.log("xiaomai useCounter....");
+  const [count, setCount] = useState(0);
+  const delayRef = useRef(delay);
+  const tick = useEffectEvent(() => {
+    // setTimeout(tick, delay);
+    // setCount((c) => c + 1);
+    console.log("xiaomai useEffectEvent中延迟任务执行了...");
+  });
+
+  // useEffect(() => {
+  //   delayRef.current = delay;
+  // }, [delay]);
+
   useEffect(() => {
-    const id = setInterval(() => {
-      callback();
-    }, delay);
+    console.log("xiaomai 进入了useCounter effect执行逻辑........");
+    // const id = setInterval(() => {
+    //   setCount(c => c + 1);
+    // }, delayRef.current);
+
+    // let id;
+    // // 递归 setTimeout 来模拟 setInterval
+    // const tick = ()=>{
+    //   id = setTimeout(tick, delayRef.current);
+    //   setCount(c => c + 1);
+    // }
+    // id = setTimeout(tick, delayRef.current);
+    // return;
+    // id = tick();
+
+    let id;
+    tick();
+
     return () => {
+      console.log("xiaomai useEffect清理函数执行了...");
       clearInterval(id);
     };
-  }, [delay, callback]); // 需要在依赖项中指定 “callback”
+  }, []);
+
+  return count;
+}
+
+function Test222(delay) {
+  console.log("xiaomai Test222....");
+  return <div>测试</div>;
 }
